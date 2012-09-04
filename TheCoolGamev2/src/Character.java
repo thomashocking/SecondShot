@@ -13,6 +13,12 @@ public class Character implements GAME_CONSTS{
 	private int gold;
 	private ArrayList<HealthPotion> potions;
 	
+	/***Setters and Getters
+	*
+	*
+	*
+	*/
+	
 	public void setHealth_Cap(int healthCap){
 		this.HEALTH_CAP = healthCap;
 	}
@@ -78,6 +84,7 @@ public class Character implements GAME_CONSTS{
 	}
 	
 	public void setHealthPotions(int numOfPotions){
+		//will add onto previous amount of potions.
 		for(int i = 0; i < numOfPotions; i++){
 			potions.add(new HealthPotion());
 		}
@@ -88,7 +95,13 @@ public class Character implements GAME_CONSTS{
 		theCharacter.printStats();
 	}
 	
+	//set a seed if your doing error checking on a specific problem.
+	//will be used when game control class is implemented.
 	public Character(long SEED){
+		/****INITS
+		 * 
+		 * 
+		 */
 		this.setStats(this.statGeneration(SEED));
 		potions = new ArrayList<HealthPotion>();
 	}
@@ -96,7 +109,7 @@ public class Character implements GAME_CONSTS{
 	private ArrayList statGeneration(long SEED){
 		Random generator = new Random();
 		//generator.setSeed(SEED);
-		int randHealth, randMana, randAttack;
+		int randHealth, randMana, randAttack = 0;
 		randHealth = generator.nextInt(10) + 5;
 		while(randHealth > 10){
 			randHealth = generator.nextInt(10) + 5;

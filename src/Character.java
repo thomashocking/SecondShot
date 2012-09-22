@@ -39,6 +39,10 @@ public class Character implements GAME_CONSTS{
 		this.health = health;
 	}
 	
+	public void setHealthOnAttack(int damage){
+		this.health -= damage;
+	}
+	
 	public int getHealth(){
 		return this.health;
 	}

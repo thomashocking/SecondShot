@@ -45,4 +45,15 @@ public abstract class Monster {
 	public int getExpDrop(){
 		return this.expDrop;
 	}
+	
+	public void printStats(){
+		System.out.println("A " + this.getName() + " appears!");
+		System.out.println("Health: " + this.getHealth());
+		System.out.println("Attack: " + this.getAttack());
+	}
+	
+	public void attackPlayer(Character player){
+		
+	}
+	public abstract void specialAttack(int monsterAttack);
 }

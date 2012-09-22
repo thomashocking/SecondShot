@@ -1,6 +1,8 @@
 
 public interface GAME_CONSTS {
-	long DEFAULT_SEED = 1;
+	final long DEFAULT_SEED = 1;
 	int HEALTH_POTION_MAX = 15;
 	int MANA_POTION_MAX = 10;
+	final int INTRO_MENU_NUM = 0;
+	final int MAIN_MENU_NUM = 1;
 }

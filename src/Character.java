@@ -41,6 +41,9 @@ public class Character implements GAME_CONSTS{
 	
 	public void setHealthOnAttack(int damage){
 		this.health -= damage;
+		if(this.getHealth() <= 0){
+			System.out.println("The Player has died!");
+		}
 	}
 	
 	public int getHealth(){
@@ -141,7 +144,7 @@ public class Character implements GAME_CONSTS{
 	public void printStats(){
 		System.out.println("Your health is:" + this.getHealth());
 		System.out.println("Your mana is:" + this.getMana());
-		System.out.println("Your attack:" + this.getAttack());System.out.println(potions.size());
+		System.out.println("Your attack:" + this.getAttack());
 		System.out.println("Your exp is:" + this.getExp());
 		System.out.println("Your level is:" + this.getLevel());
 		System.out.println("Your gold is:" + this.getGold());

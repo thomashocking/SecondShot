@@ -6,6 +6,12 @@ public abstract class Monster {
 	private int goldDrop;
 	private int expDrop;
 	
+	public Monster(){
+		this.setName("Default Monster");
+		this.setAttack(0);
+		this.setHealth(0);
+	}
+	
 	public void setName(String name){
 		this.Name = name;
 	}
@@ -24,6 +30,10 @@ public abstract class Monster {
 	
 	public void setHealth(int health){
 		this.health = health;
+	}
+	
+	public void setHealthOnAttack(int damage){
+		this.health -= damage;
 	}
 	
 	public int getHealth(){
@@ -46,14 +56,17 @@ public abstract class Monster {
 		return this.expDrop;
 	}
 	
-	public void printStats(){
-		System.out.println("A " + this.getName() + " appears!");
-		System.out.println("Health: " + this.getHealth());
-		System.out.println("Attack: " + this.getAttack());
+	public void descriptionOnEncouter(){
+		System.out.println(this.toString());
+	}
+	
+	public String toString(){
+		return this.getName();
 	}
 	
 	public void attackPlayer(Character player){
-		
+		player.setHealthOnAttack(this.getAttack());
 	}
+	
 	public abstract void specialAttack(int monsterAttack);
 }

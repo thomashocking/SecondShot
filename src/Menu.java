@@ -1,8 +1,6 @@
 
 public abstract class Menu {
 	
-	private int menuNumber;
-	
 	public abstract void show();
 	
 	

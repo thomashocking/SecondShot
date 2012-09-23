@@ -164,4 +164,5 @@ public class Character implements GAME_CONSTS{
 		System.out.println(potions.size() + " Health Potions left!");
 		}
 	}
+	
 }

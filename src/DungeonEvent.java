@@ -20,6 +20,10 @@ public class DungeonEvent extends Event implements GAME_CONSTS{
 			event = new TreasureEvent();
 			event.start(player);
 		}
+		else if(randomEvent == 2){
+			event = new MonsterEvent();
+			event.start(player);
+		}
 	}
 	
 }

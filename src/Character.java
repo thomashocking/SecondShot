@@ -11,7 +11,8 @@ public class Character implements GAME_CONSTS{
 	private int exp;
 	private int level;
 	private int gold;
-	private ArrayList<HealthPotion> potions;
+	private ArrayList<HealthPotion> healthPotions;
+	private ArrayList<ManaPotion> manaPotions;
 	
 	/***Setters and Getters
 	*
@@ -70,6 +71,10 @@ public class Character implements GAME_CONSTS{
 		this.exp = exp;
 	}
 	
+	public void setExpOnKill(int newExp){
+		this.exp += newExp;
+	}
+	
 	public int getExp(){
 		return this.exp;
 	}
@@ -90,19 +95,35 @@ public class Character implements GAME_CONSTS{
 		return this.gold;
 	}
 	
+	public static void main(String[]args){
+		Character player = new Character(1);
+		player.setManaPotions(1);
+		System.out.println(player.getManaPotionSize());
+	}
+	
 	public void setHealthPotions(int numOfPotions){
 		//will add onto previous amount of potions.
 		for(int i = 0; i < numOfPotions; i++){
-			potions.add(new HealthPotion());
+			healthPotions.add(new HealthPotion());
 		}
 	}
 	
-	public static void main(String[] args){
-		Character theCharacter = new Character(DEFAULT_SEED);
-		theCharacter.printStats();
+	public void setManaPotions(int numOfPotions){
+		//will add onto previous amount of potions.
+		for(int i = 0; i < numOfPotions; i++){
+			manaPotions.add(new ManaPotion());
+		}
 	}
 	
-	//set a seed if your doing error checking on a specific problem.
+	public int getHealthPotionSize(){
+		return healthPotions.size();
+	}
+	
+	public int getManaPotionSize(){
+		return manaPotions.size();
+	}
+	
+	//set a seed if your doing error checking on a set of values.
 	//will be used when game control class is implemented.
 	public Character(long SEED){
 		/****INITS
@@ -110,7 +131,8 @@ public class Character implements GAME_CONSTS{
 		 * 
 		 */
 		this.setStats(this.statGeneration(SEED));
-		potions = new ArrayList<HealthPotion>();
+		healthPotions = new ArrayList<HealthPotion>();
+		manaPotions = new ArrayList<ManaPotion>();
 	}
 	
 	private ArrayList statGeneration(long SEED){
@@ -153,16 +175,38 @@ public class Character implements GAME_CONSTS{
 	
 	public void drinkHealthPotion(){
 		int healthPot = 0;
-		if(potions.size() == 0){
+		if(healthPotions.size() == 0){
 			System.out.println("Out of potions!");
 		}
 		else{
-		healthPot = potions.size();
+		healthPot = healthPotions.size();
 		healthPot-=1;
-		potions.get(healthPot).healHealth(this);
-		potions.remove(healthPot);
-		System.out.println(potions.size() + " Health Potions left!");
+		healthPotions.get(healthPot).healHealth(this);
+		healthPotions.remove(healthPot);
+		System.out.println(healthPotions.size() + " Health Potions left!");
 		}
 	}
 	
+	public void pickUpGold(int newGold){
+		this.setGold(this.getGold() + newGold);
+	}
+	
+	//could be possible abstracted out code for future refactoring.
+	
+	//possible solution would be base class Potion, and then 2 different child classes.
+	public void drinkManaPotion(){
+		int manaPot = 0;
+		if(manaPotions.size() == 0){
+			System.out.println("Out of potions!");
+		}
+		else{
+		manaPot = healthPotions.size();
+		manaPot-=1;
+		manaPotions.get(manaPot).restoreMana(this);
+		manaPotions.remove(manaPot);
+		System.out.println(manaPotions.size() + " Mana Potions left!");
+		}
+	}
+	
+
 }

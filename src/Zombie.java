@@ -1,15 +1,29 @@
+import java.util.Random;
 
-public class Monster {
+
+public class Zombie extends Monster {
 	private String Name;
 	private int attack;
 	private int health;
 	private int goldDrop;
 	private int expDrop;
+	Random generator;
 	
-	public Monster(){
-		this.setName("Default Monster");
-		this.setAttack(0);
-		this.setHealth(0);
+	public Zombie(){
+		this.setName("Zombie");
+		generator = new Random();
+		this.generateStats();
+	}
+	
+	private void generateStats(){
+		int randNum = generator.nextInt(10) + 2;
+		this.setHealth(randNum);
+		randNum = generator.nextInt(3) + 1;
+		this.setAttack(randNum);
+		randNum = generator.nextInt(10) + 1;
+		this.setGoldDrop(randNum);
+		randNum = generator.nextInt(15) + 5;
+		this.setExpDrop(randNum);
 	}
 	
 	public void setName(String name){
@@ -57,7 +71,9 @@ public class Monster {
 	}
 	
 	public void descriptionOnEncouter(){
-		System.out.println(this.toString());
+		System.out.println("A " + this.toString() + "! appears!");
+		System.out.println("Health: " + this.getHealth());
+		System.out.println("Attack: " + this.getAttack());
 	}
 	
 	public String toString(){

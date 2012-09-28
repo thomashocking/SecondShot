@@ -6,6 +6,8 @@ public interface GAME_CONSTS {
 	final int INTRO_MENU_NUM = 0;
 	final int MAIN_MENU_NUM = 1;
 	final int MONSTER_BATTLE_MENU = 2;
+	final int SHOP_MENU = 3;
 	final int EVENT_NUM = 0;
 	final int DUNGEON_EVENT_NUM = 1;
+	final int SHOP_EVENT_NUM = 2;
 }

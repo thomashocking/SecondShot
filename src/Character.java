@@ -55,6 +55,10 @@ public class Character implements GAME_CONSTS{
 		this.mana = mana;
 	}
 	
+	public void setManaOnUse(int manaUsed){
+		this.mana -= manaUsed;
+	}
+	
 	public int getMana(){
 		return this.mana;
 	}
@@ -93,6 +97,29 @@ public class Character implements GAME_CONSTS{
 	
 	public int getGold(){
 		return this.gold;
+	}
+	
+	public void setGoldOnPotionPurchase(int amount, int type){
+		if(type == 1){
+			int healthPotionCost = 10;
+			int playerGold = this.getGold();
+			if(healthPotionCost * amount > this.getGold()){
+				System.out.println("You dont have enough!");
+			}
+			else{
+			this.setGold(playerGold -= healthPotionCost * amount);
+			}
+		}
+		else if(type == 2){
+			int manaPotionCost = 15;
+			int playerGold = this.getGold();
+			if(manaPotionCost * amount > this.getGold()){
+				System.out.println("You dont have enough!");
+			}
+			else{
+			this.setGold(playerGold -= manaPotionCost * amount);
+			}
+		}
 	}
 	
 	public static void main(String[]args){
@@ -164,12 +191,13 @@ public class Character implements GAME_CONSTS{
 	}
 	
 	public void printStats(){
-		System.out.println("Your health is:" + this.getHealth());
-		System.out.println("Your mana is:" + this.getMana());
-		System.out.println("Your attack:" + this.getAttack());
-		System.out.println("Your exp is:" + this.getExp());
-		System.out.println("Your level is:" + this.getLevel());
-		System.out.println("Your gold is:" + this.getGold());
+		System.out.println("Your health is: " + this.getHealth());
+		System.out.println("Your mana is: " + this.getMana());
+		System.out.println("Your attack: " + this.getAttack());
+		System.out.println("Your exp is: " + this.getExp());
+		System.out.println("Your level is: " + this.getLevel());
+		System.out.println("Your gold is: " + this.getGold());
+		System.out.println(this.getHealthPotionSize() + " Health Potions");
 	}
 	
 	
@@ -208,5 +236,7 @@ public class Character implements GAME_CONSTS{
 		}
 	}
 	
-
+	public void buyHealthPotions(){
+		
+	}
 }

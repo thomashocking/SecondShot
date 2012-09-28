@@ -87,7 +87,7 @@ public class Zombie extends Monster {
 	public void dropLoot(Character player){
 		System.out.println("The " + this.getName() + " dropped " + this.getGoldDrop() + " gold!");
 		player.pickUpGold(this.getGoldDrop());
-		System.out.println("You have also gained: " + this.getExpDrop() + "EXP!");
+		System.out.println("You have also gained: " + this.getExpDrop() + " EXP!");
 		player.setExpOnKill(this.getExpDrop());
 	}
 }

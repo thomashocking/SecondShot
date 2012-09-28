@@ -24,8 +24,11 @@ public class GameControl implements GAME_CONSTS{
 	}
 	
 	public void mainLoop(){
+		boolean gameDone = false;
+		while(!gameDone){
 		menu = new MainMenu();
 		menu.show();
-		userInput.handleInput(menu);
+		 gameDone = userInput.handleMainMenuInput();
+		}
 	}
 }

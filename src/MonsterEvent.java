@@ -20,7 +20,7 @@ public class MonsterEvent extends Event {
 		menu.show();
 		userInput = new InputHandler(player);
 		userInput.takeMonster(monster);
-		userInput.handleInput(menu);
+		userInput.handleBattleMenuInput();
 	}
 	
 }
